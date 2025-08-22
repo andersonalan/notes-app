@@ -1,13 +1,24 @@
 import PostItImage from '@/assets/images/post-it.png';
-import { Image, StyleSheet, Text, View } from "react-native";
+import { useRouter } from 'expo-router';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+
 
 const HomeScreen = () => {
+  const router = useRouter();
   return (
     <View
       style={ styles.container }>
-      <Image source={PostItImage} style={styles.image}/>
+      <Image source={PostItImage} style={styles.image}/>      
       <Text style={styles.title}>Bem vindo ao Notes App</Text>
       <Text style={styles.subtitle}>Salve suas anotações aqui!</Text>
+
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => router.push('/notes')}
+      >
+        <Text style={styles.buttonText }>Vamos iniciar!</Text>
+        
+      </TouchableOpacity>
     </View>
   );
 }
@@ -37,6 +48,18 @@ const styles = StyleSheet.create({
     color: '#666',
     textAlign: 'center',
     marginBottom: 20,
+  },
+  button: {
+    backgroundColor: '#007bff',
+    paddingVertical: 12,
+    paddingHorizontal: 25,
+    borderRadius: 8,
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: 'bold',
   },
 });
 
